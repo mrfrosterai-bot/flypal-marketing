@@ -27,24 +27,34 @@ function FlightCard() {
       position: "relative",
       overflow: "hidden",
     }}>
-      {/* Viewer badge */}
+      {/* Top-right badge stack */}
       <div style={{
         position: "absolute",
         top: "16px",
         right: "16px",
         display: "flex",
-        alignItems: "center",
-        gap: "5px",
-        background: "#fff3e8",
-        border: "1px solid #f5d5b8",
-        borderRadius: "20px",
-        padding: "4px 10px",
-        fontSize: "12px",
-        fontWeight: 700,
-        color: "#c2692a",
+        flexDirection: "column",
+        alignItems: "flex-end",
+        gap: "8px",
       }}>
-        <Users size={12} />
-        {viewers} watching
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5px",
+          background: "#fff3e8",
+          border: "1px solid #f5d5b8",
+          borderRadius: "20px",
+          padding: "4px 10px",
+          fontSize: "12px",
+          fontWeight: 700,
+          color: "#c2692a",
+        }}>
+          <Users size={12} />
+          {viewers} watching
+        </div>
+        <span className="badge badge-blue" style={{ fontSize: "11px" }}>
+          In Air
+        </span>
       </div>
 
       {/* Airline + status */}
@@ -58,13 +68,10 @@ function FlightCard() {
         }}>✈️</div>
         <div>
           <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "20px", color: "#1a1410" }}>
-            AA 1234
+            AA 171
           </div>
           <div style={{ fontSize: "12px", color: "#6b5b4e" }}>American Airlines</div>
         </div>
-        <span className="badge badge-blue" style={{ marginLeft: "auto", fontSize: "11px" }}>
-          In Air
-        </span>
       </div>
 
       {/* Route */}
