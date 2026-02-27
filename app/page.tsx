@@ -270,7 +270,7 @@ function Nav() {
           How it works
         </a>
         <a
-          href="https://flightsync-app-nsit.vercel.app"
+          href="https://app.flypal.app"
           className="btn-primary"
           style={{ padding: "10px 20px", fontSize: "14px", borderRadius: "12px" }}
         >
@@ -710,7 +710,7 @@ function TravelAgentSection() {
             They feel taken care of. You stop answering "where's my flight?" calls.
           </p>
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <a href="https://flightsync-app-nsit.vercel.app" className="btn-primary">
+            <a href="https://app.flypal.app" className="btn-primary">
               Try FlyPal Free
             </a>
             <a href="https://studio217.ai" className="btn-outline" style={{
@@ -813,7 +813,7 @@ function DownloadCTA() {
           </a>
         </div>
         <div style={{ marginTop: "24px" }}>
-          <a href="https://flightsync-app-nsit.vercel.app" style={{
+          <a href="https://app.flypal.app" style={{
             fontSize: "14px",
             color: "#6b5b4e",
             textDecoration: "underline",
