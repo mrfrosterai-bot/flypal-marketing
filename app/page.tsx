@@ -721,7 +721,7 @@ function TravelAgentSection() {
             </a>
           </div>
           <p style={{ marginTop: "16px", fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>
-            Studio217 automates your entire agency ops — check-ins, CC auth, flight tracking.
+            Studio217 automates your entire agency ops — flight tracking & more.
           </p>
         </div>
 
