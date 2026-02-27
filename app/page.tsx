@@ -6,18 +6,89 @@ import {
   ArrowRight, Star, Zap, Globe, Shield, ChevronDown
 } from "lucide-react";
 
+// ── Flight scenarios that cycle through the card ─────────────────────────────
+const SCENARIOS = [
+  {
+    flight: "AA 171", airline: "American Airlines", emoji: "✈️",
+    from: "JFK", fromCity: "New York", dep: "06:00",
+    to: "LAX", toCity: "Los Angeles", arr: "09:20",
+    status: "In Air", statusColor: "#2f86ff", statusBg: "#e8f0ff",
+    progress: 62, progressLabel: "62% complete",
+    gate: "B22", terminal: "Terminal 8", extra: "On Time ✅",
+    watchersBase: 14,
+    subtitle: "Mom, Dad + 12 others are watching live",
+  },
+  {
+    flight: "DL 402", airline: "Delta Air Lines", emoji: "✈️",
+    from: "BOS", fromCity: "Boston", dep: "14:45",
+    to: "MIA", toCity: "Miami", arr: "18:10",
+    status: "Departs in 3h", statusColor: "#f59e0b", statusBg: "#fff8e1",
+    progress: 0, progressLabel: "Departing this afternoon",
+    gate: "C14", terminal: "Terminal C", extra: "Scheduled ✅",
+    watchersBase: 6,
+    subtitle: "Shared with family before leaving for the airport",
+  },
+  {
+    flight: "UA 2281", airline: "United Airlines", emoji: "✈️",
+    from: "ORD", fromCity: "Chicago", dep: "08:15",
+    to: "LHR", toCity: "London", arr: "22:30",
+    status: "Boarding", statusColor: "#8b5cf6", statusBg: "#f0ebff",
+    progress: 0, progressLabel: "Now boarding · Gate closes 08:05",
+    gate: "K7", terminal: "Terminal 1", extra: "On Time ✅",
+    watchersBase: 9,
+    subtitle: "Wife + kids tracking from home · No app needed",
+  },
+  {
+    flight: "B6 915", airline: "JetBlue", emoji: "✈️",
+    from: "FLL", fromCity: "Fort Lauderdale", dep: "11:30",
+    to: "JFK", toCity: "New York", arr: "14:05",
+    status: "Landed ✓", statusColor: "#22c55e", statusBg: "#e8fdf0",
+    progress: 100, progressLabel: "Arrived 8 min early 🎉",
+    gate: "A3", terminal: "Terminal 5", extra: "Arrived Early ✅",
+    watchersBase: 11,
+    subtitle: "Your Lyft driver knew you landed before you texted",
+  },
+];
+
 // ── Animated Flight Card (Hero) ──────────────────────────────────────────────
 function FlightCard() {
-  const [progress, setProgress] = useState(42);
-  const [viewers, setViewers] = useState(17);
+  const [scenarioIdx, setScenarioIdx] = useState(0);
+  const [viewers, setViewers] = useState(14);
+  const [animProgress, setAnimProgress] = useState(62);
+  const [fading, setFading] = useState(false);
 
+  const scenario = SCENARIOS[scenarioIdx];
+
+  // Cycle through scenarios every 5s
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(p => (p >= 96 ? 12 : p + 0.5));
-      setViewers(v => Math.max(12, Math.min(23, v + (Math.random() > 0.7 ? 1 : Math.random() > 0.7 ? -1 : 0))));
-    }, 1200);
-    return () => clearInterval(interval);
+    const t = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setScenarioIdx(i => (i + 1) % SCENARIOS.length);
+        setFading(false);
+      }, 400);
+    }, 5000);
+    return () => clearInterval(t);
   }, []);
+
+  // Update viewers + progress when scenario changes
+  useEffect(() => {
+    setViewers(scenario.watchersBase);
+    setAnimProgress(scenario.progress);
+  }, [scenario]);
+
+  // Animate progress bar for in-air flights
+  useEffect(() => {
+    if (scenario.status !== "In Air") return;
+    const t = setInterval(() => {
+      setAnimProgress(p => (p >= 96 ? 62 : p + 0.4));
+      setViewers(v => Math.max(scenario.watchersBase - 2, Math.min(scenario.watchersBase + 6,
+        v + (Math.random() > 0.7 ? 1 : Math.random() > 0.7 ? -1 : 0))));
+    }, 1400);
+    return () => clearInterval(t);
+  }, [scenario]);
+
+  const displayProgress = scenario.status === "In Air" ? animProgress : scenario.progress;
 
   return (
     <div className="card animate-float" style={{
@@ -26,6 +97,8 @@ function FlightCard() {
       width: "100%",
       position: "relative",
       overflow: "hidden",
+      opacity: fading ? 0 : 1,
+      transition: "opacity 0.4s ease",
     }}>
       {/* Top-right badge stack */}
       <div style={{
@@ -52,12 +125,20 @@ function FlightCard() {
           <Users size={12} />
           {viewers} watching
         </div>
-        <span className="badge badge-blue" style={{ fontSize: "11px" }}>
-          In Air
+        <span style={{
+          background: scenario.statusBg,
+          color: scenario.statusColor,
+          border: `1px solid ${scenario.statusColor}33`,
+          borderRadius: "20px",
+          padding: "3px 10px",
+          fontSize: "11px",
+          fontWeight: 700,
+        }}>
+          {scenario.status}
         </span>
       </div>
 
-      {/* Airline + status */}
+      {/* Airline row */}
       <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
         <div style={{
           width: "40px", height: "40px",
@@ -65,12 +146,12 @@ function FlightCard() {
           borderRadius: "12px",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: "20px",
-        }}>✈️</div>
+        }}>{scenario.emoji}</div>
         <div>
           <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "20px", color: "#1a1410" }}>
-            AA 171
+            {scenario.flight}
           </div>
-          <div style={{ fontSize: "12px", color: "#6b5b4e" }}>American Airlines</div>
+          <div style={{ fontSize: "12px", color: "#6b5b4e" }}>{scenario.airline}</div>
         </div>
       </div>
 
@@ -82,27 +163,27 @@ function FlightCard() {
         marginBottom: "20px",
       }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "28px", color: "#1a1410" }}>JFK</div>
-          <div style={{ fontSize: "13px", fontWeight: 700, color: "#2f86ff" }}>06:00</div>
-          <div style={{ fontSize: "11px", color: "#a8998d" }}>New York</div>
+          <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "28px", color: "#1a1410" }}>{scenario.from}</div>
+          <div style={{ fontSize: "13px", fontWeight: 700, color: "#2f86ff" }}>{scenario.dep}</div>
+          <div style={{ fontSize: "11px", color: "#a8998d" }}>{scenario.fromCity}</div>
         </div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "0 12px" }}>
           <div style={{ width: "100%", height: "2px", background: "#e8ddd0", borderRadius: "2px", position: "relative", overflow: "hidden" }}>
             <div style={{
               position: "absolute",
               left: 0, top: 0, bottom: 0,
-              width: `${progress}%`,
-              background: "linear-gradient(90deg, #2f86ff, #7c3aed)",
+              width: `${displayProgress}%`,
+              background: `linear-gradient(90deg, ${scenario.statusColor}, #7c3aed)`,
               borderRadius: "2px",
               transition: "width 1.2s ease",
             }} />
           </div>
-          <div style={{ fontSize: "10px", color: "#a8998d", fontWeight: 600 }}>{Math.round(progress)}% complete</div>
+          <div style={{ fontSize: "10px", color: "#a8998d", fontWeight: 600 }}>{scenario.progressLabel}</div>
         </div>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "28px", color: "#1a1410" }}>LAX</div>
-          <div style={{ fontSize: "13px", fontWeight: 700, color: "#2f86ff" }}>09:20</div>
-          <div style={{ fontSize: "11px", color: "#a8998d" }}>Los Angeles</div>
+          <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "28px", color: "#1a1410" }}>{scenario.to}</div>
+          <div style={{ fontSize: "13px", fontWeight: 700, color: "#2f86ff" }}>{scenario.arr}</div>
+          <div style={{ fontSize: "11px", color: "#a8998d" }}>{scenario.toCity}</div>
         </div>
       </div>
 
@@ -116,16 +197,29 @@ function FlightCard() {
         fontSize: "12px",
         color: "#6b5b4e",
       }}>
-        <span>🚪 Gate B22</span>
+        <span>🚪 Gate {scenario.gate}</span>
         <span style={{ margin: "0 4px", color: "#e8ddd0" }}>·</span>
-        <span>🏛 Terminal 8</span>
+        <span>🏛 {scenario.terminal}</span>
         <span style={{ margin: "0 4px", color: "#e8ddd0" }}>·</span>
-        <span>✅ On Time</span>
+        <span>{scenario.extra}</span>
       </div>
 
-      {/* Last update */}
-      <div style={{ marginTop: "12px", fontSize: "11px", color: "#a8998d", textAlign: "center" }}>
-        Live · Updated just now
+      {/* Scenario subtitle */}
+      <div style={{ marginTop: "12px", fontSize: "11px", color: "#a8998d", textAlign: "center", fontStyle: "italic" }}>
+        {scenario.subtitle}
+      </div>
+
+      {/* Scenario dots */}
+      <div style={{ marginTop: "12px", display: "flex", justifyContent: "center", gap: "6px" }}>
+        {SCENARIOS.map((_, i) => (
+          <div key={i} style={{
+            width: i === scenarioIdx ? "18px" : "6px",
+            height: "6px",
+            borderRadius: "3px",
+            background: i === scenarioIdx ? "#2f86ff" : "#e8ddd0",
+            transition: "all 0.4s ease",
+          }} />
+        ))}
       </div>
     </div>
   );
