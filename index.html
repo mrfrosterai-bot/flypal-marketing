@@ -7,7 +7,7 @@
 <meta name="description" content="FlyPal helps families and friends track flights in real-time. Know when your loved ones land, share itineraries, and never miss a pickup again.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
    RESET & BASE
@@ -15,23 +15,23 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --blue: #2f86ff;
-  --blue-deep: #1a5fd4;
-  --coral: #ff6b4a;
-  --coral-light: #ff8a70;
-  --cream: #fdf8f2;
-  --cream-dark: #f5ede3;
-  --dark: #1a1a2e;
-  --dark-soft: #2d2d44;
-  --gold: #d4a843;
-  --gold-light: #f0d68a;
-  --text: #2a2a3a;
-  --text-light: #6b6b80;
-  --white: #ffffff;
+  --blue: #e07b39;
+  --blue-deep: #c45c20;
+  --coral: #ff7a5c;
+  --coral-light: #ff9a80;
+  --cream: #111110;
+  --cream-dark: #1a1917;
+  --dark: #ede9e3;
+  --dark-soft: #c8c0b6;
+  --gold: #e8944a;
+  --gold-light: #f0c080;
+  --text: #ede9e3;
+  --text-light: #9a9189;
+  --white: #1a1917;
   --radius: 20px;
   --radius-sm: 12px;
   --shadow-soft: 0 4px 30px rgba(0,0,0,0.06);
-  --shadow-lift: 0 12px 40px rgba(47,134,255,0.15);
+  --shadow-lift: 0 12px 40px rgba(224,123,57,0.15);
   --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -43,8 +43,8 @@ html {
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', 'Nunito', sans-serif;
+  font-weight: 600;
   color: var(--text);
   background: var(--cream);
   overflow-x: hidden;
@@ -201,7 +201,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .navbar.scrolled {
-  background: rgba(253, 248, 242, 0.92);
+  background: rgba(17, 17, 16, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0.75rem 0;
@@ -365,7 +365,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--white);
+  background: var(--cream-dark);
   padding: 0.5rem 1.25rem;
   border-radius: 100px;
   font-size: 0.85rem;
@@ -624,14 +624,14 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .status-scheduled {
-  background: rgba(47,134,255,0.2);
+  background: rgba(224,123,57,0.2);
   color: #60a5fa;
 }
 
 /* Floating elements around phone */
 .floating-notif {
   position: absolute;
-  background: var(--white);
+  background: var(--cream-dark);
   border-radius: 16px;
   padding: 12px 18px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
@@ -660,7 +660,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   animation-delay: 0s;
 }
 
-.notif-1 .notif-icon { background: rgba(47,134,255,0.1); }
+.notif-1 .notif-icon { background: rgba(224,123,57,0.1); }
 
 .notif-2 {
   bottom: 25%;
@@ -718,8 +718,8 @@ button { border: none; cursor: pointer; font-family: inherit; }
   padding: 2rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(0,0,0,0.06);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  background: var(--white);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: var(--cream-dark);
 }
 
 .marquee-track {
@@ -773,7 +773,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .feature-card {
-  background: var(--white);
+  background: var(--cream-dark);
   border-radius: var(--radius);
   padding: clamp(2rem, 4vw, 3rem);
   position: relative;
@@ -816,7 +816,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   margin-bottom: 1.5rem;
 }
 
-.feature-card:nth-child(1) .feature-icon { background: rgba(47,134,255,0.1); }
+.feature-card:nth-child(1) .feature-icon { background: rgba(224,123,57,0.1); }
 .feature-card:nth-child(2) .feature-icon { background: rgba(255,107,74,0.1); }
 .feature-card:nth-child(3) .feature-icon { background: rgba(212,168,67,0.1); }
 .feature-card:nth-child(4) .feature-icon { background: rgba(34,197,94,0.1); }
@@ -846,7 +846,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 .feature-card:nth-child(1) .feature-visual {
   position: relative;
   height: 200px;
-  background: linear-gradient(135deg, rgba(47,134,255,0.05), rgba(47,134,255,0.12));
+  background: linear-gradient(135deg, rgba(224,123,57,0.05), rgba(224,123,57,0.12));
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -857,7 +857,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 .radar-ring {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(47,134,255,0.2);
+  border: 2px solid rgba(224,123,57,0.2);
   animation: radar-pulse 3s ease-out infinite;
 }
 
@@ -900,7 +900,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(47,134,255,0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(224,123,57,0.15), transparent 70%);
   pointer-events: none;
 }
 
@@ -952,7 +952,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 
 .step:nth-child(1) .step-number {
   background: linear-gradient(135deg, var(--blue), var(--blue-deep));
-  box-shadow: 0 8px 30px rgba(47,134,255,0.3);
+  box-shadow: 0 8px 30px rgba(224,123,57,0.3);
 }
 
 .step:nth-child(2) .step-number {
@@ -1066,11 +1066,11 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .demo-browser {
-  background: var(--white);
+  background: var(--cream-dark);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 .browser-bar {
@@ -1079,7 +1079,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   gap: 8px;
   padding: 14px 18px;
   background: var(--cream-dark);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .browser-dot {
@@ -1095,7 +1095,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 .browser-url {
   flex: 1;
   margin-left: 12px;
-  background: var(--white);
+  background: var(--cream-dark);
   padding: 6px 14px;
   border-radius: 8px;
   font-size: 0.75rem;
@@ -1212,7 +1212,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   position: absolute;
   bottom: -20px;
   left: -30px;
-  background: var(--white);
+  background: var(--cream-dark);
   border-radius: 16px;
   padding: 16px 22px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -1239,7 +1239,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .demo-floating .avatar:first-child { margin-left: 0; }
-.demo-floating .avatar:nth-child(1) { background: rgba(47,134,255,0.15); }
+.demo-floating .avatar:nth-child(1) { background: rgba(224,123,57,0.15); }
 .demo-floating .avatar:nth-child(2) { background: rgba(255,107,74,0.15); }
 .demo-floating .avatar:nth-child(3) { background: rgba(212,168,67,0.15); }
 
@@ -1257,7 +1257,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
    ═══════════════════════════════════════════ */
 .testimonials {
   padding: clamp(5rem, 10vw, 9rem) 0;
-  background: var(--white);
+  background: var(--cream-dark);
   overflow: hidden;
 }
 
@@ -1323,7 +1323,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   font-weight: 900;
 }
 
-.testimonial-card:nth-child(1) .testimonial-avatar { background: rgba(47,134,255,0.12); color: var(--blue); }
+.testimonial-card:nth-child(1) .testimonial-avatar { background: rgba(224,123,57,0.12); color: var(--blue); }
 .testimonial-card:nth-child(2) .testimonial-avatar { background: rgba(255,107,74,0.12); color: var(--coral); }
 .testimonial-card:nth-child(3) .testimonial-avatar { background: rgba(212,168,67,0.12); color: var(--gold); }
 
@@ -1364,7 +1364,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 30% 40%, rgba(47,134,255,0.12) 0%, transparent 50%),
+  background: radial-gradient(circle at 30% 40%, rgba(224,123,57,0.12) 0%, transparent 50%),
               radial-gradient(circle at 70% 60%, rgba(255,107,74,0.08) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -1446,7 +1446,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 
 .btn-outline:hover {
   border-color: var(--blue);
-  background: rgba(47,134,255,0.1);
+  background: rgba(224,123,57,0.1);
   transform: translateY(-2px);
 }
 
@@ -1671,7 +1671,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
    SELECTION
    ═══════════════════════════════════════════ */
 ::selection {
-  background: rgba(47,134,255,0.2);
+  background: rgba(224,123,57,0.2);
   color: var(--text);
 }
 
@@ -1798,7 +1798,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
       </p>
 
       <div class="hero-actions reveal stagger-4">
-        <a href="https://apps.apple.com/app/flypal" target="_blank" rel="noopener">
+        <a href="https://apps.apple.com/app/flypal-app/id6759919284" target="_blank" rel="noopener">
           <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
                alt="Download on the App Store" 
                class="app-store-badge">
@@ -2163,7 +2163,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
         </p>
 
         <div class="cta-actions">
-          <a href="https://apps.apple.com/app/flypal" target="_blank" rel="noopener">
+          <a href="https://apps.apple.com/app/flypal-app/id6759919284" target="_blank" rel="noopener">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
                  alt="Download on the App Store" 
                  class="app-store-badge">
