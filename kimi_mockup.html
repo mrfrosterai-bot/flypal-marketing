@@ -1,0 +1,547 @@
+```html
+<div class="demo-visual reveal-right">
+  <div class="browser-mockup">
+    <div class="browser-header">
+      <div class="browser-dots">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div class="browser-address">flypal.app/track/DL247</div>
+    </div>
+    <div class="browser-content">
+      <div class="flight-map">
+        <!-- Map Background -->
+        <div class="map-dots">
+          <div class="map-dot" style="top: 20%; left: 15%;"></div>
+          <div class="map-dot" style="top: 30%; left: 25%;"></div>
+          <div class="map-dot" style="top: 25%; left: 40%;"></div>
+          <div class="map-dot" style="top: 40%; left: 55%;"></div>
+          <div class="map-dot" style="top: 35%; left: 70%;"></div>
+          <div class="map-dot" style="top: 50%; left: 80%;"></div>
+          <div class="map-dot" style="top: 60%; left: 20%;"></div>
+          <div class="map-dot" style="top: 70%; left: 45%;"></div>
+          <div class="map-dot" style="top: 65%; left: 65%;"></div>
+          <div class="map-dot" style="top: 55%; left: 85%;"></div>
+        </div>
+        
+        <!-- Curved Flight Path SVG -->
+        <svg class="flight-path-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet">
+          <!-- Glow filter -->
+          <defs>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#e07b39" stop-opacity="0.3" />
+              <stop offset="50%" stop-color="#ff7a5c" stop-opacity="1" />
+              <stop offset="100%" stop-color="#e07b39" stop-opacity="0.3" />
+            </linearGradient>
+          </defs>
+          
+          <!-- Background track -->
+          <path d="M 100 200 Q 400 50 700 200" 
+                fill="none" 
+                stroke="#e07b39" 
+                stroke-width="2" 
+                stroke-opacity="0.2"
+                stroke-dasharray="8,8"/>
+          
+          <!-- Animated flight path -->
+          <path d="M 100 200 Q 400 50 700 200" 
+                fill="none" 
+                stroke="url(#pathGradient)" 
+                stroke-width="3"
+                stroke-linecap="round"
+                filter="url(#glow)">
+            <animate attributeName="stroke-dasharray" 
+                     values="0,800;800,0" 
+                     dur="2s" 
+                     fill="freeze"/>
+          </path>
+          
+          <!-- Plane emoji that follows the path -->
+          <g class="plane-group" filter="url(#glow)">
+            <text x="-12" y="-8" font-size="28" style="filter: drop-shadow(0 0 8px rgba(224, 123, 57, 0.8));">Γ£ê∩╕Å</text>
+            <animateMotion dur="2s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1">
+              <mpath href="#flightCurve"/>
+            </animateMotion>
+          </g>
+          
+          <!-- Invisible path for animation reference -->
+          <path id="flightCurve" d="M 100 200 Q 400 50 700 200" fill="none"/>
+          
+          <!-- Airport markers -->
+          <circle cx="100" cy="200" r="6" fill="#e07b39" stroke="#111110" stroke-width="2"/>
+          <circle cx="700" cy="200" r="6" fill="#ff7a5c" stroke="#111110" stroke-width="2"/>
+          
+          <!-- Pulse rings -->
+          <circle cx="400" cy="125" r="8" fill="none" stroke="#ff7a5c" stroke-width="2" opacity="0.8">
+            <animate attributeName="r" values="8;20" dur="1.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        
+        <!-- Airport Labels -->
+        <div class="airport-label jfk">
+          <div class="airport-code">JFK</div>
+          <div class="airport-city">New York</div>
+        </div>
+        <div class="airport-label lax">
+          <div class="airport-code">LAX</div>
+          <div class="airport-city">Los Angeles</div>
+        </div>
+        
+        <!-- Flight Info Badge -->
+        <div class="flight-info-badge">
+          <div class="flight-icon">Γ£ê</div>
+          <div class="flight-details">
+            <div class="flight-number">DL 247</div>
+            <div class="flight-status">In Flight</div>
+          </div>
+          <div class="flight-eta">
+            <div class="eta-label">ETA</div>
+            <div class="eta-time">3h 42m</div>
+          </div>
+        </div>
+        
+        <!-- Glassmorphism Tracking Badge -->
+        <div class="tracking-badge">
+          <div class="tracking-avatars">
+            <div class="avatar">M</div>
+            <div class="avatar">D</div>
+            <div class="avatar">S</div>
+          </div>
+          <div class="tracking-text">
+            <span class="tracking-number">3</span> family members tracking right now
+          </div>
+          <div class="live-pulse">
+            <span class="pulse-dot"></span>
+            <span class="live-text">LIVE</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Status Bar -->
+      <div class="status-bar">
+        <div class="status-item">
+          <div class="status-dot active"></div>
+          <span>Tracking Active</span>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item">
+          <span class="status-label">Altitude</span>
+          <span class="status-value">38,000 ft</span>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item">
+          <span class="status-label">Speed</span>
+          <span class="status-value">547 mph</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .demo-visual {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    
+    .browser-mockup {
+      background: #1a1a2e;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 
+                  0 0 0 1px rgba(255, 255, 255, 0.08),
+                  0 0 60px rgba(224, 123, 57, 0.15);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .browser-header {
+      background: linear-gradient(180deg, #252542 0%, #1e1e36 100%);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    .browser-dots {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    
+    .browser-address {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: rgba(237, 233, 227, 0.6);
+      font-size: 13px;
+      text-align: center;
+      font-family: 'SF Mono', Monaco, monospace;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .browser-content {
+      padding: 0;
+      position: relative;
+    }
+    
+    .flight-map {
+      position: relative;
+      height: 320px;
+      background: linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #1a1a2e 100%);
+      overflow: hidden;
+    }
+    
+    /* Map background dots */
+    .map-dots {
+      position: absolute;
+      inset: 0;
+    }
+    
+    .map-dot {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(237, 233, 227, 0.15);
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    
+    .map-dot:nth-child(2n) { animation-delay: 0.5s; }
+    .map-dot:nth-child(3n) { animation-delay: 1s; }
+    .map-dot:nth-child(4n) { animation-delay: 1.5s; }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.35; }
+    }
+    
+    /* SVG Flight Path */
+    .flight-path-svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    
+    .plane-group {
+      animation: planePulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes planePulse {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(224, 123, 57, 0.6)); }
+      50% { filter: drop-shadow(0 0 20px rgba(255, 122, 92, 0.9)); }
+    }
+    
+    /* Airport Labels */
+    .airport-label {
+      position: absolute;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+    
+    .airport-label.jfk {
+      left: 12%;
+      top: 72%;
+    }
+    
+    .airport-label.lax {
+      right: 12%;
+      top: 72%;
+      transform: translateX(50%);
+    }
+    
+    .airport-code {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ede9e3;
+      letter-spacing: 1px;
+    }
+    
+    .airport-city {
+      font-size: 12px;
+      color: rgba(237, 233, 227, 0.5);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    
+    /* Flight Info Badge */
+    .flight-info-badge {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17, 17, 16, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(224, 123, 57, 0.3);
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                  0 0 0 1px rgba(255, 122, 92, 0.1);
+    }
+    
+    .flight-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e07b39 0%, #ff7a5c 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      box-shadow: 0 4px 15px rgba(224, 123, 57, 0.4);
+    }
+    
+    .flight-details {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .flight-number {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ede9e3;
+      letter-spacing: 0.5px;
+    }
+    
+    .flight-status {
+      font-size: 12px;
+      color: #27c93f;
+      font-weight: 600;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .flight-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #27c93f;
+      border-radius: 50%;
+      animation: statusBlink 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes statusBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    
+    .flight-eta {
+      text-align: right;
+      padding-left: 16px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .eta-label {
+      font-size: 11px;
+      color: rgba(237, 233, 227, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .eta-time {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ff7a5c;
+      margin-top: 2px;
+    }
+    
+    /* Glassmorphism Tracking Badge */
+    .tracking-badge {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    
+    .tracking-avatars {
+      display: flex;
+      margin-right: 4px;
+    }
+    
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e07b39 0%, #ff7a5c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      border: 2px solid #1a1a2e;
+      margin-left: -10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .avatar:first-child {
+      margin-left: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .avatar:nth-child(2) {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .avatar:nth-child(3) {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .tracking-badge:hover .avatar:nth-child(1) { transform: translateX(-3px); }
+    .tracking-badge:hover .avatar:nth-child(2) { transform: translateY(-3px); }
+    .tracking-badge:hover .avatar:nth-child(3) { transform: translateX(3px); }
+    
+    .tracking-text {
+      font-size: 13px;
+      color: rgba(237, 233, 227, 0.85);
+      font-weight: 500;
+    }
+    
+    .tracking-number {
+      color: #ff7a5c;
+      font-weight: 700;
+    }
+    
+    .live-pulse {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-left: 12px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #ff7a5c;
+      border-radius: 50%;
+      position: relative;
+    }
+    
+    .pulse-dot::before,
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #ff7a5c;
+      border-radius: 50%;
+      animation: pulseRing 2s ease-out infinite;
+    }
+    
+    .pulse-dot::after {
+      animation-delay: 0.5s;
+    }
+    
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(4); opacity: 0; }
+    }
+    
+    .live-text {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ff7a5c;
+      letter-spacing: 1px;
+    }
+    
+    /* Status Bar */
+    .status-bar {
+      background: #111110;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(237, 233, 227, 0.7);
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #27c93f;
+      animation: statusBlink 2s ease-in-out infinite;
+    }
+    
+    .status-dot.active {
+      box-shadow: 0 0 8px #27c93f;
+    }
+    
+    .status-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .status-label {
+      color: rgba(237, 233, 227, 0.4);
+      font-size: 12px;
+    }
+    
+    .status-value {
+      color: #ede9e3;
+      font-weight: 600;
+    }
+    
+    /* Reveal Animation */
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      animation: revealRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    @keyframes revealRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</div>
+```
