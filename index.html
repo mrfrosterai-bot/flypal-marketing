@@ -979,8 +979,12 @@ button { border: none; cursor: pointer; font-family: inherit; }
   align-items: center;
   justify-content: center;
   font-size: 3.5rem;
+  color: rgba(255,255,255,0.85);
   animation: step-bounce 3s ease-in-out infinite;
 }
+.step:nth-child(1) .step-anim { color: #e07b39; }
+.step:nth-child(2) .step-anim { color: #ff7a5c; }
+.step:nth-child(3) .step-anim { color: #d4a843; }
 
 .step:nth-child(2) .step-anim { animation-delay: 0.5s; }
 .step:nth-child(3) .step-anim { animation-delay: 1s; }
@@ -1749,10 +1753,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
 <!-- ═══════════ NAVBAR ═══════════ -->
 <nav class="navbar" id="navbar">
   <div class="container">
-    <a href="#" class="nav-logo">
-      <img src="logo.png" alt="FlyPal" class="butterfly-icon" style="width:40px;height:40px;border-radius:8px;">
-      FlyPal
-    </a>
+    <a href="#" class="nav-logo">FlyPal</a>
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#features">Features</a></li>
@@ -1817,20 +1818,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
         </a>
       </div>
 
-      <div class="hero-stats reveal stagger-5">
-        <div class="hero-stat">
-          <div class="number">10K+</div>
-          <div class="label">Flights Tracked</div>
-        </div>
-        <div class="hero-stat">
-          <div class="number">4.9</div>
-          <div class="label">App Store Rating</div>
-        </div>
-        <div class="hero-stat">
-          <div class="number">50+</div>
-          <div class="label">Airlines Covered</div>
-        </div>
-      </div>
+
     </div>
 
     <div class="hero-visual reveal">
@@ -1928,27 +1916,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   </div>
 </section>
 
-<!-- ═══════════ MARQUEE ═══════════ -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="mar-dot"></span>Real-Time Tracking</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Family Sharing</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Push Notifications</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Multi-Flight View</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Live Map</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Gate Updates</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Delay Alerts</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Airport Info</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Real-Time Tracking</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Family Sharing</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Push Notifications</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Multi-Flight View</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Live Map</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Gate Updates</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Delay Alerts</span>
-    <span class="marquee-item"><span class="mar-dot"></span>Airport Info</span>
-  </div>
-</div>
+
 
 <!-- ═══════════ FEATURES ═══════════ -->
 <section class="features" id="features">
@@ -2013,7 +1981,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
       <div class="step reveal stagger-1">
         <div class="step-number">1</div>
         <div class="step-illustration">
-          <div class="step-anim">🔍</div>
+          <div class="step-anim"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="22" cy="22" r="14" stroke="currentColor" stroke-width="3"/><line x1="32" y1="32" x2="42" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M18 22h8M22 18v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         </div>
         <h3>Add a Flight</h3>
         <p>Enter any flight number or let us auto-detect from your booking email. That's it.</p>
@@ -2022,7 +1990,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
       <div class="step reveal stagger-2">
         <div class="step-number">2</div>
         <div class="step-illustration">
-          <div class="step-anim">🔗</div>
+          <div class="step-anim"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M20 12a8 8 0 0 1 0 16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M28 20a8 8 0 0 1 0 16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 28l4-4 4 4M32 20l4-4 4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
         <h3>Share the Link</h3>
         <p>Send a tracking link to family & friends. They can watch the flight live — no account needed.</p>
@@ -2031,7 +1999,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
       <div class="step reveal stagger-3">
         <div class="step-number">3</div>
         <div class="step-illustration">
-          <div class="step-anim">🎉</div>
+          <div class="step-anim"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="currentColor" stroke-width="2.5" fill="currentColor" opacity="0.3"/><circle cx="12" cy="36" r="3" fill="currentColor" opacity="0.5"/><circle cx="36" cy="36" r="3" fill="currentColor" opacity="0.5"/><circle cx="24" cy="40" r="2" fill="currentColor" opacity="0.4"/><path d="M6 12l3 3M42 12l-3 3M6 24h4M38 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
         <h3>Track Together</h3>
         <p>Everyone follows the journey in real-time. Get notified on takeoff, landing, and delays together.</p>
@@ -2220,10 +2188,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="nav-logo">
-          <img src="logo.png" alt="FlyPal" class="butterfly-icon" style="width:40px;height:40px;border-radius:8px;">
-          FlyPal
-        </a>
+        <a href="#" class="nav-logo">FlyPal</a>
         <p>Track flights together. Built with love for families who care about every journey, not just the destination.</p>
         <div class="footer-social">
           <a href="#" aria-label="Twitter">𝕏</a>
