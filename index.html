@@ -1758,7 +1758,7 @@ button { border: none; cursor: pointer; font-family: inherit; }
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#download" class="nav-cta">Get the App</a></li>
       <li>
-        <button id="themeToggle" aria-label="Toggle dark mode" style="background:none;border:none;cursor:pointer;font-size:1.4rem;padding:4px 8px;border-radius:8px;transition:background 0.3s;">🌙</button>
+        <button id="themeToggle" aria-label="Toggle dark mode" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);cursor:pointer;font-size:1.2rem;padding:8px 12px;border-radius:50px;transition:all 0.3s;backdrop-filter:blur(10px);display:flex;align-items:center;gap:6px;"><span style="font-size:1rem;">🌙</span><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.5px;">DARK</span></button>
       </li>
     </ul>
 
@@ -2388,17 +2388,17 @@ const themeToggle = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('flypal-theme');
 if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   document.documentElement.setAttribute('data-theme', 'dark');
-  themeToggle.textContent = '☀️';
+  themeToggle.innerHTML = '<span style="font-size:1rem;">☀️</span><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.5px;">LIGHT</span>';
 }
 themeToggle.addEventListener('click', () => {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   if (isDark) {
     document.documentElement.removeAttribute('data-theme');
-    themeToggle.textContent = '🌙';
+    themeToggle.innerHTML = '<span style="font-size:1rem;">🌙</span><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.5px;">DARK</span>';
     localStorage.setItem('flypal-theme', 'light');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
-    themeToggle.textContent = '☀️';
+    themeToggle.innerHTML = '<span style="font-size:1rem;">☀️</span><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.5px;">LIGHT</span>';
     localStorage.setItem('flypal-theme', 'dark');
   }
 });
