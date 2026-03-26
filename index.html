@@ -1340,7 +1340,7 @@
                             </svg>
                             Download Free
                         </a>
-                        <a href="https://flightsync-app-nsit.vercel.app/" class="btn-secondary" target="_blank">
+                        <a href="https://app.flypal.app/" class="btn-secondary" target="_blank">
                             Try Web App
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1567,7 +1567,7 @@
                         <li>Share tracking with one tap</li>
                     </ul>
 
-                    <a href="https://flightsync-app-nsit.vercel.app/" class="btn-primary" target="_blank">
+                    <a href="https://app.flypal.app/" class="btn-primary" target="_blank">
                         Try the Live App
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1714,7 +1714,7 @@
                 
                 <p style="margin: 1rem 0; color: var(--text-gray);">or</p>
                 
-                <a href="https://flightsync-app-nsit.vercel.app/" class="web-app-link reveal" target="_blank">
+                <a href="https://app.flypal.app/" class="web-app-link reveal" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -1767,7 +1767,7 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
                         <li><a href="#download">Download</a></li>
-                        <li><a href="https://flightsync-app-nsit.vercel.app/" target="_blank">Web App</a></li>
+                        <li><a href="https://app.flypal.app/" target="_blank">Web App</a></li>
                     </ul>
                 </div>
 
@@ -1832,8 +1832,8 @@
 
             // Scroll reveal animation using Intersection Observer
             const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                threshold: 0,
+                rootMargin: '0px 0px 200px 0px'
             };
 
             const observer = new IntersectionObserver(function(entries) {
@@ -1845,9 +1845,13 @@
             }, observerOptions);
 
             // Observe elements for animation
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
+            const revealEls = document.querySelectorAll('.reveal');
+            revealEls.forEach(el => observer.observe(el));
+
+            // Fallback: activate all reveal elements after 1.5s in case observer doesn't fire
+            setTimeout(() => {
+                revealEls.forEach(el => el.classList.add('active'));
+            }, 1500);
 
             // Theme toggle functionality (placeholder)
             const themeToggle = document.querySelector('.theme-toggle');
