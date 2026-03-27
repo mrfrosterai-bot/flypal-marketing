@@ -1013,6 +1013,16 @@
             display: block;
         }
 
+        .app-button.coming-soon {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .app-button.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
         .web-app-link {
             color: var(--orange-accent);
             text-decoration: none;
@@ -1328,17 +1338,18 @@
                 <div class="hero-text">
                     <div class="badge">
                         <span class="badge-dot"></span>
-                        Now on the App Store
+                        Coming Soon to App Stores
                     </div>
                     <h1>Track<br>Flights<br><span class="highlight">Together</span></h1>
                     <p class="hero-subtitle">Know exactly when your loved ones take off, fly, and land. Share flights with family & friends — never miss a pickup again.</p>
                     
                     <div class="hero-actions">
-                        <a href="https://apps.apple.com/app/flypal-app/id6759919284" class="btn-primary">
+                        <a href="https://app.flypal.app/" class="btn-primary" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                             </svg>
-                            Download Free
+                            Launch Web App
                         </a>
                         <a href="https://app.flypal.app/" class="btn-secondary" target="_blank">
                             Try Web App
@@ -1694,22 +1705,22 @@
                 <p class="cta-subtitle reveal">Download FlyPal and never wonder "did they land?" again. Free to start, free to share.</p>
                 
                 <div class="app-buttons reveal">
-                    <a href="https://apps.apple.com/app/flypal-app/id6759919284" class="app-button">
+                    <div class="app-button coming-soon" title="Coming Soon to App Store">
                         <svg width="140" height="50" viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="140" height="50" rx="10" fill="#000"/>
-                            <text x="50" y="20" fill="white" font-size="10" font-family="system-ui">Download on the</text>
-                            <text x="50" y="38" fill="white" font-size="16" font-family="system-ui" font-weight="600">App Store</text>
-                            <path d="M30 15c-3 0-5.5 2-6.5 5 .5-.2 1-.3 1.5-.3 2 0 3.5 1.5 3.5 3.5 0 .5-.1 1-.3 1.5 3-1 5-3.5 5-6.5 0-1.5-1.5-3-3.2-3zM25.5 21c-2.5 0-4.5 2-4.5 4.5 0 3 2.5 5.5 5 5.5.8 0 1.5-.2 2.2-.5-.5-1-1.2-2-2.2-2.8 1-.8 1.7-1.8 2.2-2.8-.7-.3-1.4-.5-2.2-.5-.5 0-1 .1-1.5.3.2-.5.3-1 .3-1.5 0-.5-.1-1-.3-1.4z" fill="white"/>
+                            <rect width="140" height="50" rx="10" fill="#333" stroke="#555" stroke-width="1"/>
+                            <text x="50" y="20" fill="#999" font-size="10" font-family="system-ui">Coming Soon to</text>
+                            <text x="50" y="38" fill="#999" font-size="16" font-family="system-ui" font-weight="600">App Store</text>
+                            <path d="M30 15c-3 0-5.5 2-6.5 5 .5-.2 1-.3 1.5-.3 2 0 3.5 1.5 3.5 3.5 0 .5-.1 1-.3 1.5 3-1 5-3.5 5-6.5 0-1.5-1.5-3-3.2-3zM25.5 21c-2.5 0-4.5 2-4.5 4.5 0 3 2.5 5.5 5 5.5.8 0 1.5-.2 2.2-.5-.5-1-1.2-2-2.2-2.8 1-.8 1.7-1.8 2.2-2.8-.7-.3-1.4-.5-2.2-.5-.5 0-1 .1-1.5.3.2-.5.3-1 .3-1.5 0-.5-.1-1-.3-1.4z" fill="#999"/>
                         </svg>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.flypal.app" class="app-button">
+                    </div>
+                    <div class="app-button coming-soon" title="Coming Soon to Google Play">
                         <svg width="140" height="50" viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="140" height="50" rx="10" fill="#000"/>
-                            <text x="50" y="20" fill="white" font-size="10" font-family="system-ui">GET IT ON</text>
-                            <text x="50" y="38" fill="white" font-size="16" font-family="system-ui" font-weight="600">Google Play</text>
-                            <path d="M12 15v20l17-10-17-10zM32 25l-5-3v6l5-3z" fill="white"/>
+                            <rect width="140" height="50" rx="10" fill="#333" stroke="#555" stroke-width="1"/>
+                            <text x="50" y="20" fill="#999" font-size="10" font-family="system-ui">Coming Soon to</text>
+                            <text x="50" y="38" fill="#999" font-size="16" font-family="system-ui" font-weight="600">Google Play</text>
+                            <path d="M12 15v20l17-10-17-10zM32 25l-5-3v6l5-3z" fill="#999"/>
                         </svg>
-                    </a>
+                    </div>
                 </div>
                 
                 <p style="margin: 1rem 0; color: var(--text-gray);">or</p>
