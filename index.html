@@ -32,7 +32,7 @@
 
         :root {
             /* FlyPal Actual App Colors - Based on flypal.app */
-            --primary-dark: #1a1a1a;
+            --primary-dark: #0a0a0a;
             --primary-light: #f5f1ed;
             --orange-accent: #ff6b35;
             --orange-hover: #e85d35;
@@ -72,7 +72,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-dark);
@@ -1274,6 +1274,38 @@
             cursor: pointer;
         }
 
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-dark);
+            z-index: 999;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--orange-accent);
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -1317,6 +1349,15 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#demo">Demo</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#download">Get the App</a>
+    </div>
 
     <!-- Floating Logo -->
     <div class="butterfly-logo">
@@ -1678,23 +1719,23 @@
     <section class="final-cta" id="download">
         <div class="butterflies">
             <div class="butterfly">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="1.5">
-                    <path d="M12 3v18M8 7c-4 0-6 3-6 5s2 3 4 3 4-2 4-3V7zM16 7c4 0 6 3 6 5s-2 3-4 3-4-2-4-3V7z"/>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                 </svg>
             </div>
             <div class="butterfly">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff8f50" stroke-width="1.5">
-                    <path d="M12 3v18M8 7c-4 0-6 3-6 5s2 3 4 3 4-2 4-3V7zM16 7c4 0 6 3 6 5s-2 3-4 3-4-2-4-3V7z"/>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff8f50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                 </svg>
             </div>
             <div class="butterfly">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="1.5">
-                    <path d="M12 3v18M8 7c-4 0-6 3-6 5s2 3 4 3 4-2 4-3V7zM16 7c4 0 6 3 6 5s-2 3-4 3-4-2-4-3V7z"/>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                 </svg>
             </div>
             <div class="butterfly">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e85d35" stroke-width="1.5">
-                    <path d="M12 3v18M8 7c-4 0-6 3-6 5s2 3 4 3 4-2 4-3V7zM16 7c4 0 6 3 6 5s-2 3-4 3-4-2-4-3V7z"/>
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e85d35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                 </svg>
             </div>
         </div>
@@ -1785,20 +1826,8 @@
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul class="footer-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#press">Press</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#help">Help Center</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#status">Status</a></li>
-                        <li><a href="#api">API</a></li>
+                        <li><a href="https://studio217.ai" target="_blank">About Studio217</a></li>
+                        <li><a href="mailto:hello@studio217.ai">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -1806,9 +1835,7 @@
             <div class="footer-bottom">
                 <p>© 2026 FlyPal — A <span class="studio-credit"><a href="https://studio217.ai">STUDIO217</a></span> Product. All rights reserved.</p>
                 <div class="footer-legal">
-                    <a href="#privacy">Privacy</a>
-                    <a href="#terms">Terms</a>
-                    <a href="#cookies">Cookies</a>
+                    <span style="color: var(--text-gray); font-size: 0.875rem;">Privacy · Terms</span>
                 </div>
             </div>
         </div>
@@ -1835,16 +1862,16 @@
             const navbar = document.querySelector('.navbar');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
-                    navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+                    navbar.style.background = 'rgba(10, 10, 10, 0.98)';
                 } else {
-                    navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
                 }
             });
 
             // Scroll reveal animation using Intersection Observer
             const observerOptions = {
-                threshold: 0,
-                rootMargin: '0px 0px 200px 0px'
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             };
 
             const observer = new IntersectionObserver(function(entries) {
@@ -1863,6 +1890,23 @@
             setTimeout(() => {
                 revealEls.forEach(el => el.classList.add('active'));
             }, 1500);
+
+            // Mobile menu toggle
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.getElementById('mobileNav');
+            if (mobileBtn && mobileNav) {
+                mobileBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('open');
+                    this.textContent = mobileNav.classList.contains('open') ? '✕' : '☰';
+                });
+                // Close on link click
+                mobileNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileNav.classList.remove('open');
+                        mobileBtn.textContent = '☰';
+                    });
+                });
+            }
 
             // Theme toggle functionality (placeholder)
             const themeToggle = document.querySelector('.theme-toggle');
