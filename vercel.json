@@ -1,5 +1,31 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "share",
+          "value": "(?<code>.+)"
+        }
+      ],
+      "destination": "https://app.flypal.app/?share=:code",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "share",
+          "value": "(?<code>.+)"
+        }
+      ],
+      "destination": "https://app.flypal.app/?share=:code",
+      "permanent": false
+    }
+  ]
 }

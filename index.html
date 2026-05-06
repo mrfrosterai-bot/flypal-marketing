@@ -3,6 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      Share-link redirect. The owner-app generates share URLs on app.flypal.app,
+      but recipients sometimes land here on flypal.app (manual typing, link
+      unfurlers, OG previews). Bounce them to the app subdomain so the React
+      app can read ?share= and load the flight. Belt-and-suspenders alongside
+      the vercel.json edge redirect — this catches anything that slips through.
+    -->
+    <script>
+      (function() {
+        try {
+          var p = new URLSearchParams(window.location.search);
+          var code = p.get('share');
+          if (code) {
+            window.location.replace('https://app.flypal.app/?share=' + encodeURIComponent(code));
+          }
+        } catch (e) { /* let the page render normally if anything goes wrong */ }
+      })();
+    </script>
+
     <title>FlyPal — Track Flights Together</title>
     <meta name="description" content="Know exactly when your loved ones take off, fly, and land. Share flights with family & friends — never miss a pickup again.">
     
